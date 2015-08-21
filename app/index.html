@@ -1,0 +1,35 @@
+<html>
+<head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script>
+
+  $(function() {
+    $.getJSON(
+      "http://localhost:8080/?method=getAllUsers&jsoncallback=?",
+      function(data) {
+        console.log(data);
+        var $app = $('#app');
+        data.forEach(function(user) {
+          // debugger;
+          $app.append('<div>');
+          $app.append('<p>' + user.name + '</p>');
+          $app.append('<p>' + user.email + '</p>');
+          $app.append('<p>' + user.phone + '</p>');
+          $app.append('</div>');
+          $app.append('<hr>');
+        });
+      }
+    );
+  });
+</script>
+
+</head>
+
+<body>
+
+  <div id="app"></div>
+
+</body>
+</html>
